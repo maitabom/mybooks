@@ -1,4 +1,4 @@
-package net.baudovalentim.mybooks.ui.home
+package net.baudovalentim.mybooks.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
