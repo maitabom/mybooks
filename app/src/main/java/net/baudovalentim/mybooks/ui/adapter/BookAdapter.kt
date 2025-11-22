@@ -8,7 +8,7 @@ import net.baudovalentim.mybooks.entity.BookEntity
 import net.baudovalentim.mybooks.ui.viewholder.BookViewHolder
 
 class BookAdapter : RecyclerView.Adapter<BookViewHolder>() {
-    private val bookList = mutableListOf<BookEntity>()
+    private var bookList: List<BookEntity> = listOf()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,4 +29,7 @@ class BookAdapter : RecyclerView.Adapter<BookViewHolder>() {
         return bookList.size
     }
 
+    fun updateBooks(list: List<BookEntity>) {
+        bookList = list
+    }
 }

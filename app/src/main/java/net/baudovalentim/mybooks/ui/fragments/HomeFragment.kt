@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import net.baudovalentim.mybooks.databinding.FragmentHomeBinding
 import net.baudovalentim.mybooks.ui.adapter.BookAdapter
 import net.baudovalentim.mybooks.viewmodels.HomeViewModel
@@ -29,6 +30,10 @@ class HomeFragment : Fragment() {
         binding.rvBooks.layoutManager = LinearLayoutManager(context)
         binding.rvBooks.adapter = adapter
 
+        homeViewModel.getAllBooks()
+
+        setObservers()
+
         val root: View = binding.root
         return root
     }
@@ -36,5 +41,11 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setObservers() {
+        homeViewModel.books.observe(viewLifecycleOwner) {
+            adapter.updateBooks(it)
+        }
     }
 }
