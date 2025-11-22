@@ -7,5 +7,8 @@ import net.baudovalentim.mybooks.entity.BookEntity
 class BookViewHolder(private val item: ItemBookBinding): RecyclerView.ViewHolder(item.root) {
     fun bind(book: BookEntity) {
         item.tvTitle.text = book.title
+        item.tvAuthor.text = book.author
+        item.tvGenero.text = book.genre
+
     }
 }
