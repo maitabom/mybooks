@@ -16,4 +16,10 @@
         android:name="net.baudovalentim.mybooks.ui.fragments.FavoriteFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="net.baudovalentim.mybooks.ui.fragments.DetailsFragment"
+        android:label="@string/title_book_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>
