@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import net.baudovalentim.mybooks.R
 import net.baudovalentim.mybooks.databinding.FragmentHomeBinding
 import net.baudovalentim.mybooks.ui.adapter.BookAdapter
+import net.baudovalentim.mybooks.ui.listeners.BookListener
 import net.baudovalentim.mybooks.viewmodels.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -33,6 +36,7 @@ class HomeFragment : Fragment() {
         homeViewModel.getAllBooks()
 
         setObservers()
+        attachListeners()
 
         val root: View = binding.root
         return root
@@ -47,5 +51,13 @@ class HomeFragment : Fragment() {
         homeViewModel.books.observe(viewLifecycleOwner) {
             adapter.updateBooks(it)
         }
+    }
+
+    private fun attachListeners() {
+        adapter.attachListener(object : BookListener {
+            override fun onClick(id: Int) {
+                findNavController().navigate(R.id.navigation_details)
+            }
+        })
     }
 }
