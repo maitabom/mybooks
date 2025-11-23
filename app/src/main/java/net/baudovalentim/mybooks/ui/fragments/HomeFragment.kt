@@ -56,7 +56,10 @@ class HomeFragment : Fragment() {
     private fun attachListeners() {
         adapter.attachListener(object : BookListener {
             override fun onClick(id: Int) {
-                findNavController().navigate(R.id.navigation_details)
+                val bundle = Bundle()
+                bundle.putInt("bookId", id)
+
+                findNavController().navigate(R.id.navigation_details, bundle)
             }
         })
     }
