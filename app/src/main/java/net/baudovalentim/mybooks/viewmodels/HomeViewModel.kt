@@ -17,6 +17,6 @@ class HomeViewModel : ViewModel() {
     }
 
     fun favorite(id: Int) {
-
+        repository.toggleFavorite(id)
     }
 }
