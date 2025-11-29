@@ -7,7 +7,7 @@ import net.baudovalentim.mybooks.entity.BookEntity
 import net.baudovalentim.mybooks.repository.BookRepository
 
 class DetailsViewModel : ViewModel() {
-    private val repository: BookRepository = BookRepository()
+    private val repository: BookRepository = BookRepository.getInstance()
     private val _book = MutableLiveData<BookEntity>()
     private val _bookRemoval = MutableLiveData<Boolean>()
     val book: LiveData<BookEntity> = _book

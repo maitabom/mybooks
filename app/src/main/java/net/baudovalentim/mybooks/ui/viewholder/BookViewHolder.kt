@@ -15,6 +15,7 @@ class BookViewHolder(private val item: ItemBookBinding, private val listener: Bo
         item.tvGenero.text = book.genre
 
         item.tvTitle.setOnClickListener { listener.onClick(book.id) }
+        item.ivFavorite.setOnClickListener { listener.onFavoriteClick(book.id) }
 
         when (book.genre) {
             "Terror" -> item.tvGenero.setBackgroundResource(R.drawable.rounded_label_red)

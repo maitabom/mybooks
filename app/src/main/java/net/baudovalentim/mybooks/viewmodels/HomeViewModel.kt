@@ -8,11 +8,15 @@ import net.baudovalentim.mybooks.repository.BookRepository
 
 class HomeViewModel : ViewModel() {
     private val _books = MutableLiveData<List<BookEntity>>()
-    private val repository = BookRepository()
+    private val repository = BookRepository.getInstance()
 
     val books: LiveData<List<BookEntity>> = _books
 
     fun getAllBooks() {
         _books.value = repository.getAllBooks()
+    }
+
+    fun favorite(id: Int) {
+
     }
 }

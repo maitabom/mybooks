@@ -6,7 +6,21 @@ class BookRepository {
     private val books = mutableListOf<BookEntity>()
 
     init {
-        books.addAll(getInicialBooks());
+        books.addAll(getInicialBooks())
+    }
+
+    companion object {
+        private lateinit var instance: BookRepository
+
+        fun getInstance(): BookRepository {
+            synchronized(this) {
+                if (!::instance.isInitialized) {
+                    instance = BookRepository()
+                }
+            }
+
+            return instance
+        }
     }
 
     private fun getInicialBooks(): List<BookEntity> {
@@ -47,7 +61,7 @@ class BookRepository {
     }
 
     fun delete(id: Int): Boolean {
-       return books.removeIf { it.id == id }
+        return books.removeIf { it.id == id }
     }
 
     fun toggleFavorite(id: Int) {

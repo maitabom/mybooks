@@ -33,13 +33,16 @@ class HomeFragment : Fragment() {
         binding.rvBooks.layoutManager = LinearLayoutManager(context)
         binding.rvBooks.adapter = adapter
 
-        homeViewModel.getAllBooks()
-
         setObservers()
         attachListeners()
 
         val root: View = binding.root
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        homeViewModel.getAllBooks()
     }
 
     override fun onDestroyView() {
@@ -60,6 +63,11 @@ class HomeFragment : Fragment() {
                 bundle.putInt("bookId", id)
 
                 findNavController().navigate(R.id.navigation_details, bundle)
+            }
+
+            override fun onFavoriteClick(id: Int) {
+                homeViewModel.favorite(id)
+                homeViewModel.getAllBooks()
             }
         })
     }
